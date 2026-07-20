@@ -1,5 +1,6 @@
 {
-  "name": "study-notion",
+  "name": "learn-and-study",
+  "description": "Learn & Study - Learn smarter. Study better. Succeed faster. An ed-tech platform for creating, consuming, and rating educational content.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
