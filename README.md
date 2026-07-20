@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="320" src="./screenshots/branding/learn-and-study-logo.png" alt="Learn & Study logo" />
+  <img width="320" src="./assets/logo.png" alt="Learn & Study logo" />
 </p>
 
 <h3 align="center">Learn Smarter. Study Better. Succeed Faster.</h3>
@@ -11,8 +11,6 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 
 <hr/>
 
-
-<img width='100%' src='./screenshots/home1.png' />
 
 
 
@@ -28,7 +26,6 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 | [Schema](#schema-)                  | 🗂 Explanation of data schemas used          |
 | [React Hooks](#react-hooks-)            | 🎣 Overview of React Hooks utilized          |
 | [React Library](#react-library-)         | ⚛️📚 Overview of React Libraries used        |
-| [Screen Preview](#screen-preview-)         | 🖥️ Screen Preview        |
 
 
 
@@ -41,30 +38,28 @@ The platform is built using the **MERN stack**, which includes ReactJS, NodeJS, 
 2️⃣ A platform for instructors to showcase their expertise and connect with learners across the globe.<br/>
 
 <br/>
-<br/>
-<img width='100%' src='./screenshots/Tech%20stack%20logo/gif.gif' />
 
 
 ## Tech Stack 💻🔧 
 
 ## Frontend 🎨 : 
-<code title="React.js"><img height="40" src="./screenshots/Tech%20stack%20logo/react%20ogo.png"></code>
-<code title="Vite"><img height="40" src="./screenshots/Tech%20stack%20logo/Vitejs-logo.png"></code>
-<code title="Redux.js"><img height="35" src="./screenshots/Tech%20stack%20logo/redux-logo.png"></code>
-<code title="css"><img height="40" src="./screenshots/Tech%20stack%20logo/css%20logo.png"></code>
-<code title="Tailwind css"><img height="35" src="./screenshots/Tech%20stack%20logo/tailwind%20css%20logo.png"></code>
+- React.js
+- Vite
+- Redux.js
+- CSS
+- Tailwind CSS
 
 
 ## Backend ⚙️ :
-<code title="Nodejs"><img height="50" src="./screenshots/Tech%20stack%20logo/nodejs-logo.png"></code>
-<code title="Express"><img height="70" src="./screenshots/Tech%20stack%20logo/express%20logo.png"></code>
+- Node.js
+- Express
 
 
 ## Database 🛢️ :
-<code title="Mongodb"><img height="40" src="./screenshots/Tech%20stack%20logo/mongodb%20logo.png"></code>
+- MongoDB
 
 ## Cloudinary Integration ☁️
-<code title="Cloudinary"><img height="40" src="./screenshots/Tech%20stack%20logo/cloudinary-logo.jpg"></code>
+- Cloudinary
 
 <hr/>
 
@@ -89,8 +84,7 @@ The database for the platform is built using MongoDB, which is a NoSQL database 
 
 ## Architecture Diagram 🏗️
 <br/>
-Here is a high-level diagram that illustrates the architecture of the Learn & Study ed-tech platform:
-<img width='60%' src='./screenshots/Architecture%20Diagram.png' />
+Here is a high-level overview of the architecture of the Learn & Study ed-tech platform: front end (React) communicates with the back end (Node/Express) over REST APIs, which in turn reads and writes to the MongoDB database.
 
 
 <hr/>
@@ -141,7 +135,7 @@ The back-end of Learn & Study uses several data models and database schemas to m
 The database for the platform is built using MongoDB, a NoSQL database that provides a flexible and scalable data storage solution. MongoDB allows for the storage of unstructured and semi-structured data. The database stores the course content, user data, and other relevant information related to the platform.
 
 ## Schema 📋
-<img width='100%' src='./screenshots/Schema.png' />
+See the Data Models and Database Schema section above for the Student, Instructor, and Course schemas.
 
 <hr/>
 
@@ -176,93 +170,3 @@ Utilized several React hooks for efficient state management and dynamic behavior
 - 🔄 **Swiper:**  Modern touch slider for mobile and desktop browsers.
 - 🖋️ **React Type Animation:**  Simple and configurable typing animation component for React.
 - 🎥 **Video React:**  React-based video player for building rich multimedia experiences in web applications.
-
-
-
-##  🖥️ Screen Preview :
-
-# Random Home Page Background 🏠 
-<img width='100%' src='./screenshots/home3.png' />
-<img width='100%' src='./screenshots/home4.png' />
-
-# About Page
-<img width='100%' src='./screenshots/about.png' />
-
-# Contact Page
-<img width='100%' src='./screenshots/contact.png' />
-
-# Forgot Password
-<img width='100%' src='./screenshots/forgot%20pass.png' />
-
-# Dashboard
-<img width='100%' src='./screenshots/dashboard.png' />
-
-# Edit Profile
-<img width='100%' src='./screenshots/edit%20profile.png' />
-
-
-# Add Course
-<img width='100%' src='./screenshots/add%20course.png' />
-
-# Edit Course
-<img width='100%' src='./screenshots/edit%20course.png' />
-
-# Course Details 1
-<img width='100%' src='./screenshots/course%20details1.png' />
-
-# Course Details 2
-<img width='100%' src='./screenshots/course%20details2.png' />
-
-# Add Review
-<img width='100%' src='./screenshots/add%20review.png' />
-
-# Cart 1
-<img width='100%' src='./screenshots/cart1.png' />
-
-
-
-
-# Enrolled Courses 1
-<img width='100%' src='./screenshots/enrolled%20courses1.png' />
-
-# Enrolled Courses 2
-<img width='100%' src='./screenshots/enrolled%20courses2.png' />
-
-# Instructor Data 1
-<img width='100%' src='./screenshots/instrctor%20data1.png' />
-
-# Instructor Data 2
-<img width='100%' src='./screenshots/instrctor%20data2.png' />
-
-# My Courses 1
-<img width='100%' src='./screenshots/myCourses1.png' />
-
-# My Courses 2
-<img width='100%' src='./screenshots/myCourses2.png' />
-
-# View Courses 1
-<img width='100%' src='./screenshots/view%20course1.png' />
-
-# View Courses 2
-<img width='100%' src='./screenshots/view%20course2.png' />
-
-
-# Delete Account
-<img width='100%' src='./screenshots/delete%20account.png' />
-
-# Footer
-<img width='100%' src='./screenshots/footer.png' />
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
