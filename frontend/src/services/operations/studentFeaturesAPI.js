@@ -1,7 +1,6 @@
 import { toast } from "react-hot-toast";
 import { studentEndpoints } from "../apis";
 import { apiConnector } from "../apiConnector";
-import rzpLogo from "../../assets/Logo/rzp_logo.png"
 import { setPaymentLoading } from "../../slices/courseSlice";
 import { resetCart } from "../../slices/cartSlice";
 
@@ -23,66 +22,55 @@ function loadScript(src) {
     })
 }
 
-// ================ buyCourse ================ 
+// ================ buyCourse ================
 export async function buyCourse(token, coursesId, userDetails, navigate, dispatch) {
     const toastId = toast.loading("Loading...");
 
     try {
-        //load the script
-        const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+        //load the Paystack inline script
+        const res = await loadScript("https://js.paystack.co/v1/inline.js");
 
         if (!res) {
-            toast.error("RazorPay SDK failed to load");
+            toast.error("Paystack SDK failed to load");
             return;
         }
 
-        // initiate the order
+        // initiate the transaction (backend creates it via Paystack's API)
         const orderResponse = await apiConnector("POST", COURSE_PAYMENT_API,
             { coursesId },
             {
                 Authorization: `Bearer ${token}`,
             })
-        // console.log("orderResponse... ", orderResponse);
         if (!orderResponse.data.success) {
             throw new Error(orderResponse.data.message);
         }
 
-        const RAZORPAY_KEY = import.meta.env.VITE_APP_RAZORPAY_KEY;
-        // console.log("RAZORPAY_KEY...", RAZORPAY_KEY);
+        const { amount, currency, reference, email } = orderResponse.data.data;
+        const PAYSTACK_PUBLIC_KEY = import.meta.env.VITE_APP_PAYSTACK_PUBLIC_KEY;
 
-        // options
-        const options = {
-            key: RAZORPAY_KEY,
-            currency: orderResponse.data.message.currency,
-            amount: orderResponse.data.message.amount,
-            order_id: orderResponse.data.message.id,
-            name: "StudyNotion",
-            description: "Thank You for Purchasing the Course",
-            image: rzpLogo,
-            prefill: {
-                name: userDetails.firstName,
-                email: userDetails.email
-            },
-            handler: function (response) {
+        const handler = window.PaystackPop.setup({
+            key: PAYSTACK_PUBLIC_KEY,
+            email,
+            amount,
+            currency,
+            ref: reference,
+            callback: function (response) {
                 //send successful mail
-                sendPaymentSuccessEmail(response, orderResponse.data.message.amount, token);
+                sendPaymentSuccessEmail(response, amount, token);
                 //verifyPayment
-                verifyPayment({ ...response, coursesId }, token, navigate, dispatch);
-            }
-        }
+                verifyPayment({ reference: response.reference, coursesId }, token, navigate, dispatch);
+            },
+            onClose: function () {
+                toast.error("Payment window closed");
+            },
+        });
 
-        const paymentObject = new window.Razorpay(options);
-        paymentObject.open();
-        paymentObject.on("payment.failed", function (response) {
-            toast.error("oops, payment failed");
-            console.log("payment failed.... ", response.error);
-        })
+        handler.openIframe();
 
     }
     catch (error) {
         console.log("PAYMENT API ERROR.....", error);
         toast.error(error.response?.data?.message);
-        // toast.error("Could not make Payment");
     }
     toast.dismiss(toastId);
 }
@@ -92,8 +80,7 @@ export async function buyCourse(token, coursesId, userDetails, navigate, dispatc
 async function sendPaymentSuccessEmail(response, amount, token) {
     try {
         await apiConnector("POST", SEND_PAYMENT_SUCCESS_EMAIL_API, {
-            orderId: response.razorpay_order_id,
-            paymentId: response.razorpay_payment_id,
+            reference: response.reference,
             amount,
         }, {
             Authorization: `Bearer ${token}`
