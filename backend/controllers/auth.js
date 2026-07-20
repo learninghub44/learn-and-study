@@ -88,7 +88,7 @@ exports.signup = async (req, res) => {
         if (password !== confirmPassword) {
             return res.status(400).json({
                 success: false,
-                messgae: 'passowrd & confirm password does not match, Please try again..!'
+                message: 'passowrd & confirm password does not match, Please try again..!'
             });
         }
 
@@ -160,7 +160,7 @@ exports.signup = async (req, res) => {
         res.status(401).json({
             success: false,
             error: error.message,
-            messgae: 'User cannot be registered , Please try again..!'
+            message: 'User cannot be registered , Please try again..!'
         })
     }
 }
@@ -236,7 +236,7 @@ exports.login = async (req, res) => {
         res.status(500).json({
             success: false,
             error: error.message,
-            messgae: 'Error while Login user'
+            message: 'Error while Login user'
         })
     }
 }
@@ -325,7 +325,7 @@ exports.changePassword = async (req, res) => {
         res.status(500).json({
             success: false,
             error: error.message,
-            messgae: 'Error while changing passowrd'
+            message: 'Error while changing passowrd'
         })
     }
 }

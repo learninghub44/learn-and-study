@@ -19,24 +19,9 @@ exports.auth = (req, res, next) => {
             });
         }
 
-        // console.log('Token ==> ', token);
-        // console.log('From body -> ', req.body?.token);
-        // console.log('from cookies -> ', req.cookies?.token);
-        // console.log('from headers -> ', req.header('Authorization')?.replace('Bearer ', ''));
-
         // verify token
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            // console.log('verified decode token => ', decode);
-            
-            // *********** example from console ***********
-            // verified decode token =>  {
-            //     email: 'buydavumli@biyac.com',
-            //     id: '650d6ae2914831142c702e4c',
-            //     accountType: 'Student',
-            //     iat: 1699452446,
-            //     exp: 1699538846
-            //   }
             req.user = decode;
         }
         catch (error) {
@@ -45,7 +30,7 @@ exports.auth = (req, res, next) => {
             return res.status(401).json({
                 success: false,
                 error: error.message,
-                messgae: 'Error while decoding token'
+                message: 'Error while decoding token'
             })
         }
         // go to next middleware
@@ -56,7 +41,7 @@ exports.auth = (req, res, next) => {
         console.log(error);
         return res.status(500).json({
             success: false,
-            messgae: 'Error while token validating'
+            message: 'Error while token validating'
         })
     }
 }
@@ -68,11 +53,10 @@ exports.auth = (req, res, next) => {
 // ================ IS STUDENT ================
 exports.isStudent = (req, res, next) => {
     try {
-        // console.log('User data -> ', req.user)
         if (req.user?.accountType != 'Student') {
             return res.status(401).json({
                 success: false,
-                messgae: 'This Page is protected only for student'
+                message: 'This Page is protected only for student'
             })
         }
         // go to next middleware
@@ -84,7 +68,7 @@ exports.isStudent = (req, res, next) => {
         return res.status(500).json({
             success: false,
             error: error.message,
-            messgae: 'Error while cheching user validity with student accountType'
+            message: 'Error while cheching user validity with student accountType'
         })
     }
 }
@@ -93,11 +77,10 @@ exports.isStudent = (req, res, next) => {
 // ================ IS INSTRUCTOR ================
 exports.isInstructor = (req, res, next) => {
     try {
-        // console.log('User data -> ', req.user)
         if (req.user?.accountType != 'Instructor') {
             return res.status(401).json({
                 success: false,
-                messgae: 'This Page is protected only for Instructor'
+                message: 'This Page is protected only for Instructor'
             })
         }
         // go to next middleware
@@ -109,7 +92,7 @@ exports.isInstructor = (req, res, next) => {
         return res.status(500).json({
             success: false,
             error: error.message,
-            messgae: 'Error while cheching user validity with Instructor accountType'
+            message: 'Error while cheching user validity with Instructor accountType'
         })
     }
 }
@@ -118,11 +101,10 @@ exports.isInstructor = (req, res, next) => {
 // ================ IS ADMIN ================
 exports.isAdmin = (req, res, next) => {
     try {
-        // console.log('User data -> ', req.user)
         if (req.user.accountType != 'Admin') {
             return res.status(401).json({
                 success: false,
-                messgae: 'This Page is protected only for Admin'
+                message: 'This Page is protected only for Admin'
             })
         }
         // go to next middleware
@@ -134,7 +116,7 @@ exports.isAdmin = (req, res, next) => {
         return res.status(500).json({
             success: false,
             error: error.message,
-            messgae: 'Error while cheching user validity with Admin accountType'
+            message: 'Error while cheching user validity with Admin accountType'
         })
     }
 }
