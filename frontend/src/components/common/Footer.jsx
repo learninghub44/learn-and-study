@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 // Images
-import LearnAndStudyLogo from "../../assets/Logo/Logo-Full-Light.png";
+import LearnAndStudyLogo from "../../assets/Logo/Logo-Full-Light.svg";
 
 // footer data
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
