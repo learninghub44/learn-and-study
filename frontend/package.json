@@ -20,7 +20,6 @@
     "concurrently": "^8.2.1",
     "copy-to-clipboard": "^3.3.3",
     "framer-motion": "^10.16.4",
-    "razorpay": "^2.9.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
